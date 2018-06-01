@@ -15,6 +15,9 @@
 		3B02EF4620C14840003FA982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4420C14840003FA982 /* Main.storyboard */; };
 		3B02EF4820C14841003FA982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4720C14841003FA982 /* Assets.xcassets */; };
 		3B02EF4B20C14842003FA982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4920C14842003FA982 /* LaunchScreen.storyboard */; };
+		3BB5576B20C14AD0008FF865 /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB5576A20C14AD0008FF865 /* GameElements.swift */; };
+		3BB5576E20C1C9DD008FF865 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3BB5576C20C1C9DC008FF865 /* player.atlas */; };
+		3BB5576F20C1C9DD008FF865 /* CoinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BB5576D20C1C9DD008FF865 /* CoinSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		3B02EF4720C14841003FA982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B02EF4A20C14842003FA982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B02EF4C20C14842003FA982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BB5576A20C14AD0008FF865 /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
+		3BB5576C20C1C9DC008FF865 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
+		3BB5576D20C1C9DD008FF865 /* CoinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CoinSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +71,13 @@
 				3B02EF3E20C14840003FA982 /* Actions.sks */,
 				3B02EF4020C14840003FA982 /* GameScene.swift */,
 				3B02EF4220C14840003FA982 /* GameViewController.swift */,
+				3BB5576A20C14AD0008FF865 /* GameElements.swift */,
 				3B02EF4420C14840003FA982 /* Main.storyboard */,
 				3B02EF4720C14841003FA982 /* Assets.xcassets */,
 				3B02EF4920C14842003FA982 /* LaunchScreen.storyboard */,
 				3B02EF4C20C14842003FA982 /* Info.plist */,
+				3BB5576D20C1C9DD008FF865 /* CoinSound.mp3 */,
+				3BB5576C20C1C9DC008FF865 /* player.atlas */,
 			);
 			path = TheMalakaGame;
 			sourceTree = "<group>";
@@ -131,6 +140,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB5576F20C1C9DD008FF865 /* CoinSound.mp3 in Resources */,
+				3BB5576E20C1C9DD008FF865 /* player.atlas in Resources */,
 				3B02EF4620C14840003FA982 /* Main.storyboard in Resources */,
 				3B02EF3D20C14840003FA982 /* GameScene.sks in Resources */,
 				3B02EF4820C14841003FA982 /* Assets.xcassets in Resources */,
@@ -146,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB5576B20C14AD0008FF865 /* GameElements.swift in Sources */,
 				3B02EF4120C14840003FA982 /* GameScene.swift in Sources */,
 				3B02EF4320C14840003FA982 /* GameViewController.swift in Sources */,
 				3B02EF3B20C14840003FA982 /* AppDelegate.swift in Sources */,
