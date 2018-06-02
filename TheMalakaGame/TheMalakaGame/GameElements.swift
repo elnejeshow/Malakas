@@ -20,7 +20,6 @@ extension GameScene{
         let bird = SKSpriteNode(texture: SKTextureAtlas(named:"player").textureNamed("bird1"))
         bird.size = CGSize(width: 50, height: 50)
         bird.position = CGPoint(x:self.frame.midX, y:self.frame.midY)
-        
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width / 2)
         bird.physicsBody?.linearDamping = 1.1
         bird.physicsBody?.restitution = 0
@@ -59,7 +58,6 @@ extension GameScene{
         scoreLbl.zPosition = 5
         scoreLbl.fontSize = 50
         scoreLbl.fontName = "HelveticaNeue-Bold"
-        
         let scoreBg = SKShapeNode()
         scoreBg.position = CGPoint(x: 0, y: 0)
         scoreBg.path = CGPath(roundedRect: CGRect(x: CGFloat(-50), y: CGFloat(-30), width: CGFloat(100), height: CGFloat(100)), cornerWidth: 50, cornerHeight: 50, transform: nil)
@@ -123,12 +121,10 @@ extension GameScene{
         
         let topWall = SKSpriteNode(imageNamed: "pillar")
         let btmWall = SKSpriteNode(imageNamed: "pillar")
-        
         let reSize = CGFloat(max(480 - elapsedSeconds, 400))
         
         topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + reSize)
         btmWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 - reSize)
-        
         topWall.setScale(0.5)
         btmWall.setScale(0.5)
         
@@ -145,20 +141,17 @@ extension GameScene{
         btmWall.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
         btmWall.physicsBody?.isDynamic = false
         btmWall.physicsBody?.affectedByGravity = false
-        
         topWall.zRotation = CGFloat(Double.pi)
         
         wallPair.addChild(topWall)
         wallPair.addChild(btmWall)
-        
         wallPair.zPosition = 1
         
         let randomPosition = random(min: -200, max: 200)
         wallPair.position.y = wallPair.position.y +  randomPosition
         wallPair.addChild(flowerNode)
-        
         wallPair.run(moveAndRemove)
-        
+
         return wallPair
     }
     

@@ -57,7 +57,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let delay = SKAction.wait(forDuration: 1.5)
             let SpawnDelay = SKAction.sequence([spawn, delay])
             let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
-            
             let distance = CGFloat(self.frame.width + wallPair.frame.width)
             let movePipes = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
             let removePipes = SKAction.removeFromParent()
