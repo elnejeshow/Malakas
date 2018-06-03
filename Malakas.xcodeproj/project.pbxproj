@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B02EF3B20C14840003FA982 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02EF3A20C14840003FA982 /* AppDelegate.swift */; };
-		3B02EF3D20C14840003FA982 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF3C20C14840003FA982 /* GameScene.sks */; };
-		3B02EF3F20C14840003FA982 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF3E20C14840003FA982 /* Actions.sks */; };
 		3B02EF4120C14840003FA982 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02EF4020C14840003FA982 /* GameScene.swift */; };
 		3B02EF4320C14840003FA982 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02EF4220C14840003FA982 /* GameViewController.swift */; };
 		3B02EF4620C14840003FA982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4420C14840003FA982 /* Main.storyboard */; };
@@ -21,10 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B02EF3720C14840003FA982 /* TheMalakaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMalakaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B02EF3720C14840003FA982 /* Malakas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malakas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B02EF3A20C14840003FA982 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3B02EF3C20C14840003FA982 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		3B02EF3E20C14840003FA982 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3B02EF4020C14840003FA982 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		3B02EF4220C14840003FA982 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3B02EF4520C14840003FA982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +46,7 @@
 		3B02EF2E20C14840003FA982 = {
 			isa = PBXGroup;
 			children = (
-				3B02EF3920C14840003FA982 /* TheMalakaGame */,
+				3B02EF3920C14840003FA982 /* Malakas */,
 				3B02EF3820C14840003FA982 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,17 +54,15 @@
 		3B02EF3820C14840003FA982 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B02EF3720C14840003FA982 /* TheMalakaGame.app */,
+				3B02EF3720C14840003FA982 /* Malakas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3B02EF3920C14840003FA982 /* TheMalakaGame */ = {
+		3B02EF3920C14840003FA982 /* Malakas */ = {
 			isa = PBXGroup;
 			children = (
 				3B02EF3A20C14840003FA982 /* AppDelegate.swift */,
-				3B02EF3C20C14840003FA982 /* GameScene.sks */,
-				3B02EF3E20C14840003FA982 /* Actions.sks */,
 				3B02EF4020C14840003FA982 /* GameScene.swift */,
 				3B02EF4220C14840003FA982 /* GameViewController.swift */,
 				3BB5576A20C14AD0008FF865 /* GameElements.swift */,
@@ -79,27 +73,29 @@
 				3BB5576D20C1C9DD008FF865 /* CoinSound.mp3 */,
 				3BB5576C20C1C9DC008FF865 /* player.atlas */,
 			);
-			path = TheMalakaGame;
+			path = Malakas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B02EF3620C14840003FA982 /* TheMalakaGame */ = {
+		3B02EF3620C14840003FA982 /* Malakas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "TheMalakaGame" */;
+			buildConfigurationList = 3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "Malakas" */;
 			buildPhases = (
 				3B02EF3320C14840003FA982 /* Sources */,
 				3B02EF3420C14840003FA982 /* Frameworks */,
 				3B02EF3520C14840003FA982 /* Resources */,
+				571F7CE720C49254005F506A /* Tailor */,
+				572A205220C4A54F0083EC5E /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TheMalakaGame;
+			name = Malakas;
 			productName = TheMalakaGame;
-			productReference = 3B02EF3720C14840003FA982 /* TheMalakaGame.app */;
+			productReference = 3B02EF3720C14840003FA982 /* Malakas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -117,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "TheMalakaGame" */;
+			buildConfigurationList = 3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "Malakas" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,7 +126,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B02EF3620C14840003FA982 /* TheMalakaGame */,
+				3B02EF3620C14840003FA982 /* Malakas */,
 			);
 		};
 /* End PBXProject section */
@@ -143,14 +139,42 @@
 				3BB5576F20C1C9DD008FF865 /* CoinSound.mp3 in Resources */,
 				3BB5576E20C1C9DD008FF865 /* player.atlas in Resources */,
 				3B02EF4620C14840003FA982 /* Main.storyboard in Resources */,
-				3B02EF3D20C14840003FA982 /* GameScene.sks in Resources */,
 				3B02EF4820C14841003FA982 /* Assets.xcassets in Resources */,
 				3B02EF4B20C14842003FA982 /* LaunchScreen.storyboard in Resources */,
-				3B02EF3F20C14840003FA982 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		571F7CE720C49254005F506A /* Tailor */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Tailor;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if hash tailor 2>/dev/null; then\n    tailor\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
+		572A205220C4A54F0083EC5E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\n    if hash tailor 2>/dev/null; then\n        tailor\n    else\n        echo \"warning: Please install Tailor from https://tailor.sh\"\n    fi\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B02EF3320C14840003FA982 /* Sources */ = {
@@ -237,7 +261,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -291,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -306,12 +330,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
-				INFOPLIST_FILE = TheMalakaGame/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Malakas/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.TheMalakaGame";
+				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.Malakas";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -324,38 +349,120 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
-				INFOPLIST_FILE = TheMalakaGame/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Malakas/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.TheMalakaGame";
+				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.Malakas";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
+		57F0F6BF20C4954E00EC6BEB /* Analize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Analize;
+		};
+		57F0F6C020C4954E00EC6BEB /* Analize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7TWTFR49CJ;
+				INFOPLIST_FILE = "$(SRCROOT)/Malakas/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.Malakas";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Analize;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "TheMalakaGame" */ = {
+		3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "Malakas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B02EF4D20C14842003FA982 /* Debug */,
+				57F0F6BF20C4954E00EC6BEB /* Analize */,
 				3B02EF4E20C14842003FA982 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "TheMalakaGame" */ = {
+		3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "Malakas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B02EF5020C14842003FA982 /* Debug */,
+				57F0F6C020C4954E00EC6BEB /* Analize */,
 				3B02EF5120C14842003FA982 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
