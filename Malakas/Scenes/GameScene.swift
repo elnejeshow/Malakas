@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var moveAndRemove = SKAction()
 
     //CREATE THE BIRD ATLAS FOR ANIMATION
-    let birdAtlas = SKTextureAtlas(named: "player")
+    let birdAtlas = SKTextureAtlas(named: "Sprites")
     var birdSprites = Array<SKTexture>()
     var bird = SKSpriteNode()
     var repeatActionbird = SKAction()
