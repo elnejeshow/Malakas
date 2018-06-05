@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var elapsedSeconds: Int = 0
     var gameStarted = Bool(false)
     var died = Bool(false)
-    let coinSound = SKAction.playSoundFileNamed("CoinSound.mp3", waitForCompletion: false)
+    let collectSound = SKAction.playSoundFileNamed("collectSound.wav", waitForCompletion: false)
     var score = Int(0)
     var scoreLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
@@ -138,6 +138,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         birdSprites.append(birdAtlas.textureNamed("bird2"))
         birdSprites.append(birdAtlas.textureNamed("bird3"))
         birdSprites.append(birdAtlas.textureNamed("bird4"))
+        birdSprites.append(birdAtlas.textureNamed("bird5"))
+        birdSprites.append(birdAtlas.textureNamed("bird6"))
+        birdSprites.append(birdAtlas.textureNamed("bird7"))
+        birdSprites.append(birdAtlas.textureNamed("bird8"))
 
         self.bird = createBird()
         self.addChild(bird)
@@ -175,12 +179,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.bird.removeAllActions()
             }
         } else if firstBody.categoryBitMask == CollisionBitMask.birdCategory && secondBody.categoryBitMask == CollisionBitMask.flowerCategory {
-            run(coinSound)
+            run(collectSound)
             score += 1
             scoreLbl.text = "\(score)"
             secondBody.node?.removeFromParent()
         } else if firstBody.categoryBitMask == CollisionBitMask.flowerCategory && secondBody.categoryBitMask == CollisionBitMask.birdCategory {
-            run(coinSound)
+            run(collectSound)
             score += 1
             scoreLbl.text = "\(score)"
             firstBody.node?.removeFromParent()
