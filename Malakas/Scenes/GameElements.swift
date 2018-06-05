@@ -17,7 +17,7 @@ struct CollisionBitMask {
 
 extension GameScene {
     func createBird() -> SKSpriteNode {
-        let bird = SKSpriteNode(texture: SKTextureAtlas(named: "Sprites").textureNamed("bird1"))
+        let bird = SKSpriteNode(texture: SKTextureAtlas(named: "Sprites").textureNamed("Bat1"))
         bird.size = CGSize(width: 50, height: 50)
         bird.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width / 2)
@@ -34,7 +34,7 @@ extension GameScene {
     }
 
     func createRestartBtn() {
-        restartBtn = SKSpriteNode(imageNamed: "restart")
+        restartBtn = SKSpriteNode(imageNamed: "Restart")
         restartBtn.size = CGSize(width: 100, height: 100)
         restartBtn.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
         restartBtn.zPosition = 6
@@ -44,7 +44,7 @@ extension GameScene {
     }
 
     func createPauseBtn() {
-        pauseBtn = SKSpriteNode(imageNamed: "pause")
+        pauseBtn = SKSpriteNode(imageNamed: "Pause")
         pauseBtn.size = CGSize(width: 40, height: 40)
         pauseBtn.position = CGPoint(x: self.frame.width - 30, y: 30)
         pauseBtn.zPosition = 6
@@ -85,7 +85,7 @@ extension GameScene {
 
     func createLogo() {
         logoImg = SKSpriteNode()
-        logoImg = SKSpriteNode(imageNamed: "logo")
+        logoImg = SKSpriteNode(imageNamed: "Logo")
         logoImg.size = CGSize(width: 272, height: 65)
         logoImg.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
         logoImg.setScale(0.5)
@@ -105,7 +105,7 @@ extension GameScene {
     }
 
     func createWalls() -> SKNode {
-        let flowerNode = SKSpriteNode(imageNamed: "flower")
+        let flowerNode = SKSpriteNode(imageNamed: "Flower")
         flowerNode.size = CGSize(width: 40, height: 40)
         flowerNode.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2)
         flowerNode.physicsBody = SKPhysicsBody(rectangleOf: flowerNode.size)
@@ -119,8 +119,8 @@ extension GameScene {
         wallPair = SKNode()
         wallPair.name = "wallPair"
 
-        let topWall = SKSpriteNode(imageNamed: "pillar")
-        let btmWall = SKSpriteNode(imageNamed: "pillar")
+        let topWall = SKSpriteNode(imageNamed: "Pillar")
+        let btmWall = SKSpriteNode(imageNamed: "Pillar")
         let reSize = CGFloat(max(480 - elapsedSeconds, 400))
 
         topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + reSize)

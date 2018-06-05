@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var elapsedSeconds: Int = 0
     var gameStarted = Bool(false)
     var died = Bool(false)
-    let collectSound = SKAction.playSoundFileNamed("collectSound.wav", waitForCompletion: false)
+    let collectSound = SKAction.playSoundFileNamed("CollectSound.wav", waitForCompletion: false)
     var score = Int(0)
     var scoreLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
@@ -92,10 +92,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if pauseBtn.contains(location) {
                     if self.isPaused == false {
                         self.isPaused = true
-                        pauseBtn.texture = SKTexture(imageNamed: "play")
+                        pauseBtn.texture = SKTexture(imageNamed: "Play")
                     } else {
                         self.isPaused = false
-                        pauseBtn.texture = SKTexture(imageNamed: "pause")
+                        pauseBtn.texture = SKTexture(imageNamed: "Pause")
                     }
                 }
             }
@@ -125,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
 
         for i in 0..<2 {
-            let background = SKSpriteNode(imageNamed: "bg")
+            let background = SKSpriteNode(imageNamed: "Background")
             background.anchorPoint = CGPoint.init(x: 0, y: 0)
             background.position = CGPoint(x: CGFloat(i) * self.frame.width, y: 0)
             background.name = "background"
@@ -134,14 +134,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         //SET UP THE BIRD SPRITES FOR ANIMATION
-        birdSprites.append(birdAtlas.textureNamed("bird1"))
-        birdSprites.append(birdAtlas.textureNamed("bird2"))
-        birdSprites.append(birdAtlas.textureNamed("bird3"))
-        birdSprites.append(birdAtlas.textureNamed("bird4"))
-        birdSprites.append(birdAtlas.textureNamed("bird5"))
-        birdSprites.append(birdAtlas.textureNamed("bird6"))
-        birdSprites.append(birdAtlas.textureNamed("bird7"))
-        birdSprites.append(birdAtlas.textureNamed("bird8"))
+        birdSprites.append(birdAtlas.textureNamed("Bat1"))
+        birdSprites.append(birdAtlas.textureNamed("Bat2"))
+        birdSprites.append(birdAtlas.textureNamed("Bat3"))
+        birdSprites.append(birdAtlas.textureNamed("Bat4"))
+        birdSprites.append(birdAtlas.textureNamed("Bat5"))
+        birdSprites.append(birdAtlas.textureNamed("Bat6"))
+        birdSprites.append(birdAtlas.textureNamed("Bat7"))
+        birdSprites.append(birdAtlas.textureNamed("Bat8"))
 
         self.bird = createBird()
         self.addChild(bird)

@@ -13,7 +13,7 @@
 		3B02EF4620C14840003FA982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4420C14840003FA982 /* Main.storyboard */; };
 		3B02EF4820C14841003FA982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4720C14841003FA982 /* Assets.xcassets */; };
 		3B02EF4B20C14842003FA982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4920C14842003FA982 /* LaunchScreen.storyboard */; };
-		3B7BC73B20C6DEBB0022406B /* collectSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B7BC73A20C6DEBB0022406B /* collectSound.wav */; };
+		3B7BC73B20C6DEBB0022406B /* CollectSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B7BC73A20C6DEBB0022406B /* CollectSound.wav */; };
 		3BB5576B20C14AD0008FF865 /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB5576A20C14AD0008FF865 /* GameElements.swift */; };
 		3BB5576E20C1C9DD008FF865 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3BB5576C20C1C9DC008FF865 /* Sprites.atlas */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 		3B02EF4720C14841003FA982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B02EF4A20C14842003FA982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B02EF4C20C14842003FA982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B7BC73A20C6DEBB0022406B /* collectSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collectSound.wav; sourceTree = "<group>"; };
+		3B7BC73A20C6DEBB0022406B /* CollectSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CollectSound.wav; sourceTree = "<group>"; };
 		3BB5576A20C14AD0008FF865 /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 		3BB5576C20C1C9DC008FF865 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +92,7 @@
 		57AFD38A20C4C9DD009C25D5 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				3B7BC73A20C6DEBB0022406B /* collectSound.wav */,
+				3B7BC73A20C6DEBB0022406B /* CollectSound.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB5576E20C1C9DD008FF865 /* Sprites.atlas in Resources */,
-				3B7BC73B20C6DEBB0022406B /* collectSound.wav in Resources */,
+				3B7BC73B20C6DEBB0022406B /* CollectSound.wav in Resources */,
 				3B02EF4620C14840003FA982 /* Main.storyboard in Resources */,
 				3B02EF4820C14841003FA982 /* Assets.xcassets in Resources */,
 				3B02EF4B20C14842003FA982 /* LaunchScreen.storyboard in Resources */,
