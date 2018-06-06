@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Malakas
+//  AcroBat
 //
 //  Created by Daniele Franzutti on 01/06/18.
 //  Copyright © 2018 Daniele Franzutti. All rights reserved.

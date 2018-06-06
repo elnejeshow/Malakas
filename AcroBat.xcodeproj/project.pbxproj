@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B02EF3720C14840003FA982 /* Malakas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Malakas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B02EF3720C14840003FA982 /* AcroBat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcroBat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B02EF3A20C14840003FA982 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B02EF4020C14840003FA982 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		3B02EF4220C14840003FA982 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		3B02EF2E20C14840003FA982 = {
 			isa = PBXGroup;
 			children = (
-				3B02EF3920C14840003FA982 /* Malakas */,
+				3B02EF3920C14840003FA982 /* AcroBat */,
 				3B02EF3820C14840003FA982 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		3B02EF3820C14840003FA982 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B02EF3720C14840003FA982 /* Malakas.app */,
+				3B02EF3720C14840003FA982 /* AcroBat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3B02EF3920C14840003FA982 /* Malakas */ = {
+		3B02EF3920C14840003FA982 /* AcroBat */ = {
 			isa = PBXGroup;
 			children = (
 				3B02EF3A20C14840003FA982 /* AppDelegate.swift */,
@@ -69,7 +69,7 @@
 				57AFD38920C4C941009C25D5 /* Controllers */,
 				57AFD38820C4C93A009C25D5 /* Scenes */,
 			);
-			path = Malakas;
+			path = AcroBat;
 			sourceTree = "<group>";
 		};
 		57AFD38820C4C93A009C25D5 /* Scenes */ = {
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B02EF3620C14840003FA982 /* Malakas */ = {
+		3B02EF3620C14840003FA982 /* AcroBat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "Malakas" */;
+			buildConfigurationList = 3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "AcroBat" */;
 			buildPhases = (
 				3B02EF3320C14840003FA982 /* Sources */,
 				3B02EF3420C14840003FA982 /* Frameworks */,
@@ -133,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = Malakas;
+			name = AcroBat;
 			productName = TheMalakaGame;
-			productReference = 3B02EF3720C14840003FA982 /* Malakas.app */;
+			productReference = 3B02EF3720C14840003FA982 /* AcroBat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,7 +153,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "Malakas" */;
+			buildConfigurationList = 3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "AcroBat" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,7 +166,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B02EF3620C14840003FA982 /* Malakas */,
+				3B02EF3620C14840003FA982 /* AcroBat */,
 			);
 		};
 /* End PBXProject section */
@@ -370,13 +370,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
-				INFOPLIST_FILE = "$(SRCROOT)/Malakas/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AcroBat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.Malakas";
+				PRODUCT_BUNDLE_IDENTIFIER = com.malakas.acrobat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -389,13 +389,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
-				INFOPLIST_FILE = "$(SRCROOT)/Malakas/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AcroBat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.Malakas";
+				PRODUCT_BUNDLE_IDENTIFIER = com.malakas.acrobat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -468,13 +468,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
-				INFOPLIST_FILE = "$(SRCROOT)/Malakas/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AcroBat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Daniele-Franzutti.Malakas";
+				PRODUCT_BUNDLE_IDENTIFIER = com.malakas.acrobat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -484,7 +484,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "Malakas" */ = {
+		3B02EF3220C14840003FA982 /* Build configuration list for PBXProject "AcroBat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B02EF4D20C14842003FA982 /* Debug */,
@@ -494,7 +494,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "Malakas" */ = {
+		3B02EF4F20C14842003FA982 /* Build configuration list for PBXNativeTarget "AcroBat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B02EF5020C14842003FA982 /* Debug */,

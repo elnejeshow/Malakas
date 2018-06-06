@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  Malakas
+//  AcroBat
 //
 //  Created by Daniele Franzutti on 01/06/18.
 //  Copyright © 2018 Daniele Franzutti. All rights reserved.
@@ -28,10 +28,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var moveAndRemove = SKAction()
 
     //CREATE THE BIRD ATLAS FOR ANIMATION
-    let birdAtlas = SKTextureAtlas(named: "Sprites")
-    var birdSprites = Array<SKTexture>()
-    var bird = SKSpriteNode()
-    var repeatActionbird = SKAction()
+    let batAtlas = SKTextureAtlas(named: "Sprites")
+    var batSprites = Array<SKTexture>()
+    var bat = SKSpriteNode()
+    var repeatActionbat = SKAction()
 
     override func didMove(to view: SKView) {
         createScene()
@@ -40,13 +40,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if gameStarted == false {
             gameStarted =  true
-            bird.physicsBody?.affectedByGravity = true
+            bat.physicsBody?.affectedByGravity = true
             createPauseBtn()
             logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
                 self.logoImg.removeFromParent()
             })
             taptoplayLbl.removeFromParent()
-            self.bird.run(repeatActionbird)
+            self.bat.run(repeatActionbat)
 
             let spawn = SKAction.run({
                 () in
@@ -62,15 +62,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let removePipes = SKAction.removeFromParent()
             moveAndRemove = SKAction.sequence([movePipes, removePipes])
 
-            bird.physicsBody?.velocity = CGVector(dx: 5, dy: 5)
-            bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -30))
+            bat.physicsBody?.velocity = CGVector(dx: 5, dy: 5)
+            bat.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -30))
 
             self.run(spawnDelayForever)
 
         } else {
             if died == false {
-                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -30))
+                bat.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                bat.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -30))
             }
         }
 
@@ -116,8 +116,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsBody?.categoryBitMask = CollisionBitMask.groundCategory
-        self.physicsBody?.collisionBitMask = CollisionBitMask.birdCategory
-        self.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
+        self.physicsBody?.collisionBitMask = CollisionBitMask.batCategory
+        self.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
         self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = false
 
@@ -134,21 +134,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         //SET UP THE BIRD SPRITES FOR ANIMATION
-        birdSprites.append(birdAtlas.textureNamed("Bat1"))
-        birdSprites.append(birdAtlas.textureNamed("Bat2"))
-        birdSprites.append(birdAtlas.textureNamed("Bat3"))
-        birdSprites.append(birdAtlas.textureNamed("Bat4"))
-        birdSprites.append(birdAtlas.textureNamed("Bat5"))
-        birdSprites.append(birdAtlas.textureNamed("Bat6"))
-        birdSprites.append(birdAtlas.textureNamed("Bat7"))
-        birdSprites.append(birdAtlas.textureNamed("Bat8"))
+        batSprites.append(batAtlas.textureNamed("Bat1"))
+        batSprites.append(batAtlas.textureNamed("Bat2"))
+        batSprites.append(batAtlas.textureNamed("Bat3"))
+        batSprites.append(batAtlas.textureNamed("Bat4"))
+        batSprites.append(batAtlas.textureNamed("Bat5"))
+        batSprites.append(batAtlas.textureNamed("Bat6"))
+        batSprites.append(batAtlas.textureNamed("Bat7"))
+        batSprites.append(batAtlas.textureNamed("Bat8"))
 
-        self.bird = createBird()
-        self.addChild(bird)
+        self.bat = createBat()
+        self.addChild(bat)
 
         //ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
-        let animatebird = SKAction.animate(with: self.birdSprites, timePerFrame: 0.1)
-        self.repeatActionbird = SKAction.repeatForever(animatebird)
+        let animatebat = SKAction.animate(with: self.batSprites, timePerFrame: 0.1)
+        self.repeatActionbat = SKAction.repeatForever(animatebat)
 
         scoreLbl = createScoreLabel()
         self.addChild(scoreLbl)
@@ -166,7 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
 
-      if firstBody.categoryBitMask == CollisionBitMask.birdCategory && secondBody.categoryBitMask == CollisionBitMask.pillarCategory || firstBody.categoryBitMask == CollisionBitMask.pillarCategory && secondBody.categoryBitMask == CollisionBitMask.birdCategory || firstBody.categoryBitMask == CollisionBitMask.birdCategory && secondBody.categoryBitMask == CollisionBitMask.groundCategory || firstBody.categoryBitMask == CollisionBitMask.groundCategory && secondBody.categoryBitMask == CollisionBitMask.birdCategory {
+      if firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.pillarCategory || firstBody.categoryBitMask == CollisionBitMask.pillarCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory || firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.groundCategory || firstBody.categoryBitMask == CollisionBitMask.groundCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory {
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, _) in
                 node.speed = 0
@@ -176,14 +176,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 died = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
-                self.bird.removeAllActions()
+                self.bat.removeAllActions()
             }
-        } else if firstBody.categoryBitMask == CollisionBitMask.birdCategory && secondBody.categoryBitMask == CollisionBitMask.flowerCategory {
+        } else if firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.flowerCategory {
             run(collectSound)
             score += 1
             scoreLbl.text = "\(score)"
             secondBody.node?.removeFromParent()
-        } else if firstBody.categoryBitMask == CollisionBitMask.flowerCategory && secondBody.categoryBitMask == CollisionBitMask.birdCategory {
+        } else if firstBody.categoryBitMask == CollisionBitMask.flowerCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory {
             run(collectSound)
             score += 1
             scoreLbl.text = "\(score)"

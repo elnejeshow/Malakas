@@ -1,6 +1,6 @@
 //
 //  GameElements.swift
-//  Malakas
+//  AcroBat
 //
 //  Created by Daniele Franzutti on 01/06/18.
 //  Copyright © 2018 Daniele Franzutti. All rights reserved.
@@ -9,28 +9,28 @@
 import SpriteKit
 
 struct CollisionBitMask {
-    static let birdCategory: UInt32 = 0x1 << 0
+    static let batCategory: UInt32 = 0x1 << 0
     static let pillarCategory: UInt32 = 0x1 << 1
     static let flowerCategory: UInt32 = 0x1 << 2
     static let groundCategory: UInt32 = 0x1 << 3
 }
 
 extension GameScene {
-    func createBird() -> SKSpriteNode {
-        let bird = SKSpriteNode(texture: SKTextureAtlas(named: "Sprites").textureNamed("Bat1"))
-        bird.size = CGSize(width: 50, height: 50)
-        bird.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.width / 2)
-        bird.physicsBody?.linearDamping = 1.1
-        bird.physicsBody?.restitution = 0
-        bird.physicsBody?.categoryBitMask = CollisionBitMask.birdCategory
-        bird.physicsBody?.collisionBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.groundCategory
-        bird.physicsBody?.contactTestBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.flowerCategory | CollisionBitMask.groundCategory
-        bird.physicsBody?.affectedByGravity = false
-        bird.physicsBody?.isDynamic = true
+    func createBat() -> SKSpriteNode {
+        let bat = SKSpriteNode(texture: SKTextureAtlas(named: "Sprites").textureNamed("Bat1"))
+        bat.size = CGSize(width: 50, height: 50)
+        bat.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        bat.physicsBody = SKPhysicsBody(circleOfRadius: bat.size.width / 2)
+        bat.physicsBody?.linearDamping = 1.1
+        bat.physicsBody?.restitution = 0
+        bat.physicsBody?.categoryBitMask = CollisionBitMask.batCategory
+        bat.physicsBody?.collisionBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.groundCategory
+        bat.physicsBody?.contactTestBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.flowerCategory | CollisionBitMask.groundCategory
+        bat.physicsBody?.affectedByGravity = false
+        bat.physicsBody?.isDynamic = true
         physicsWorld.gravity = CGVector(dx: 0, dy: 4)
 
-        return bird
+        return bat
     }
 
     func createRestartBtn() {
@@ -113,7 +113,7 @@ extension GameScene {
         flowerNode.physicsBody?.isDynamic = false
         flowerNode.physicsBody?.categoryBitMask = CollisionBitMask.flowerCategory
         flowerNode.physicsBody?.collisionBitMask = 0
-        flowerNode.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
+        flowerNode.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
         flowerNode.color = SKColor.blue
 
         wallPair = SKNode()
@@ -130,15 +130,15 @@ extension GameScene {
 
         topWall.physicsBody = SKPhysicsBody(rectangleOf: topWall.size)
         topWall.physicsBody?.categoryBitMask = CollisionBitMask.pillarCategory
-        topWall.physicsBody?.collisionBitMask = CollisionBitMask.birdCategory
-        topWall.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
+        topWall.physicsBody?.collisionBitMask = CollisionBitMask.batCategory
+        topWall.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
         topWall.physicsBody?.isDynamic = false
         topWall.physicsBody?.affectedByGravity = false
 
         btmWall.physicsBody = SKPhysicsBody(rectangleOf: btmWall.size)
         btmWall.physicsBody?.categoryBitMask = CollisionBitMask.pillarCategory
-        btmWall.physicsBody?.collisionBitMask = CollisionBitMask.birdCategory
-        btmWall.physicsBody?.contactTestBitMask = CollisionBitMask.birdCategory
+        btmWall.physicsBody?.collisionBitMask = CollisionBitMask.batCategory
+        btmWall.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
         btmWall.physicsBody?.isDynamic = false
         btmWall.physicsBody?.affectedByGravity = false
         topWall.zRotation = CGFloat(Double.pi)
