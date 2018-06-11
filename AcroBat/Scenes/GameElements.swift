@@ -18,9 +18,9 @@ struct CollisionBitMask {
 extension GameScene {
     func createBat() -> SKSpriteNode {
         let bat = SKSpriteNode(texture: SKTextureAtlas(named: "Sprites").textureNamed("Bat1"))
-        bat.size = CGSize(width: 50, height: 50)
+        bat.size = CGSize(width: 75, height: 75)
         bat.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        bat.physicsBody = SKPhysicsBody(circleOfRadius: bat.size.width / 2)
+        bat.physicsBody = SKPhysicsBody(circleOfRadius: bat.size.width / 2.5)
         bat.physicsBody?.linearDamping = 1.1
         bat.physicsBody?.restitution = 0
         bat.physicsBody?.categoryBitMask = CollisionBitMask.batCategory
@@ -28,7 +28,7 @@ extension GameScene {
         bat.physicsBody?.contactTestBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.flowerCategory | CollisionBitMask.groundCategory
         bat.physicsBody?.affectedByGravity = false
         bat.physicsBody?.isDynamic = true
-        physicsWorld.gravity = CGVector(dx: 0, dy: 4)
+        physicsWorld.gravity = CGVector(dx: 0, dy: 5)
 
         return bat
     }
@@ -121,7 +121,7 @@ extension GameScene {
 
         let topWall = SKSpriteNode(imageNamed: "Pillar")
         let btmWall = SKSpriteNode(imageNamed: "Pillar")
-        let reSize = CGFloat(max(480 - elapsedSeconds, 400))
+        let reSize = CGFloat(max(480 - Int(deltaTime), 400))
 
         topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + reSize)
         btmWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 - reSize)

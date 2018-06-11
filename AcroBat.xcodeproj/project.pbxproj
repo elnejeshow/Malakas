@@ -16,6 +16,7 @@
 		3B7BC73B20C6DEBB0022406B /* CollectSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B7BC73A20C6DEBB0022406B /* CollectSound.wav */; };
 		3BB5576B20C14AD0008FF865 /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB5576A20C14AD0008FF865 /* GameElements.swift */; };
 		3BB5576E20C1C9DD008FF865 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3BB5576C20C1C9DC008FF865 /* Sprites.atlas */; };
+		57FC545D20CE0D1C006D128B /* InfiniteScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FC545C20CE0D1C006D128B /* InfiniteScrollingBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3B7BC73A20C6DEBB0022406B /* CollectSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CollectSound.wav; sourceTree = "<group>"; };
 		3BB5576A20C14AD0008FF865 /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 		3BB5576C20C1C9DC008FF865 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		57FC545C20CE0D1C006D128B /* InfiniteScrollingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollingBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				3B02EF3920C14840003FA982 /* AcroBat */,
 				3B02EF3820C14840003FA982 /* Products */,
+				57FC545E20CE34E1006D128B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +71,7 @@
 				57AFD38E20C4CE70009C25D5 /* Resources */,
 				57AFD38920C4C941009C25D5 /* Controllers */,
 				57AFD38820C4C93A009C25D5 /* Scenes */,
+				57FC545B20CE0D0B006D128B /* Vendor */,
 			);
 			path = AcroBat;
 			sourceTree = "<group>";
@@ -116,6 +120,21 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		57FC545B20CE0D0B006D128B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				57FC545C20CE0D1C006D128B /* InfiniteScrollingBackground.swift */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		57FC545E20CE34E1006D128B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,8 +145,7 @@
 				3B02EF3320C14840003FA982 /* Sources */,
 				3B02EF3420C14840003FA982 /* Frameworks */,
 				3B02EF3520C14840003FA982 /* Resources */,
-				571F7CE720C49254005F506A /* Tailor */,
-				572A205220C4A54F0083EC5E /* ShellScript */,
+				572A205220C4A54F0083EC5E /* Tailor */,
 			);
 			buildRules = (
 			);
@@ -187,7 +205,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		571F7CE720C49254005F506A /* Tailor */ = {
+		572A205220C4A54F0083EC5E /* Tailor */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,19 +213,6 @@
 			inputPaths = (
 			);
 			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n    tailor\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
-		};
-		572A205220C4A54F0083EC5E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FC545D20CE0D1C006D128B /* InfiniteScrollingBackground.swift in Sources */,
 				3BB5576B20C14AD0008FF865 /* GameElements.swift in Sources */,
 				3B02EF4120C14840003FA982 /* GameScene.swift in Sources */,
 				3B02EF4320C14840003FA982 /* GameViewController.swift in Sources */,
@@ -370,6 +376,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/AcroBat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -389,6 +399,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/AcroBat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,6 +482,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7TWTFR49CJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/AcroBat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
