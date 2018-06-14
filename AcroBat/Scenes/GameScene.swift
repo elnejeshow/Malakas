@@ -3,85 +3,109 @@
 //  AcroBat
 //
 //  Created by Daniele Franzutti on 01/06/18.
-//  Copyright © 2018 Daniele Franzutti. All rights reserved.
+//  Copyright © 2018 Malakas Team. All rights reserved.
 //
 
 import SpriteKit
-//import URWeatherView
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene {
 
-    var bgScroller: InfiniteScrollingBackground?
-    var fgScroller: InfiniteScrollingBackground?
-    var gScroller: InfiniteScrollingBackground?
-
-    var deltaTime: TimeInterval = 0
-    var lastUpdateTimeInterval: TimeInterval = 0
-
-    var forwardToggle = false
-    var _firstStart = true
-    var _startTime = TimeInterval()
-    var elapsedSeconds: Int = 0
-    var gameStarted = Bool(false)
-    var died = Bool(false)
-    let collectSound = SKAction.playSoundFileNamed("CollectSound.wav", waitForCompletion: false)
-    var score = Int(0)
-    var scoreLbl = SKLabelNode()
-    var highscoreLbl = SKLabelNode()
-    var taptoplayLbl = SKLabelNode()
-    var restartBtn = SKSpriteNode()
-    var pauseBtn = SKSpriteNode()
-    var logoImg = SKSpriteNode()
     var wallPair = SKNode()
     var moveAndRemove = SKAction()
 
-    //CREATE THE BIRD ATLAS FOR ANIMATION
+    //CREATE THE BAT ATLAS FOR ANIMATION
     let batAtlas = SKTextureAtlas(named: "Sprites")
-    var batSprites = Array<SKTexture>()
-    var bat = SKSpriteNode()
+    var batSprites = [SKTexture]()
     var repeatActionbat = SKAction()
 
-    func createSky() {
-        let topSky = SKSpriteNode(color: UIColor(hue: 0.55, saturation: 0.14, brightness: 0.97, alpha: 1), size: CGSize(width: frame.width, height: frame.height * 0.67))
-        topSky.anchorPoint = CGPoint(x: 0.5, y: 1)
+    var deltaTime: TimeInterval = 0
+    var lastUpdateTime: TimeInterval = 0
 
-        let bottomSky = SKSpriteNode(color: UIColor(hue: 0.55, saturation: 0.16, brightness: 0.96, alpha: 1), size: CGSize(width: frame.width, height: frame.height * 0.33))
-        bottomSky.anchorPoint = CGPoint(x: 0.5, y: 1)
+    var gameRunning = Bool(false)
+    var playerDied = Bool(false)
 
-        topSky.position = CGPoint(x: frame.midX, y: frame.height)
-        bottomSky.position = CGPoint(x: frame.midX, y: bottomSky.frame.height)
+    var background = ParallaxBackground()
+    var player = Bat(name: "player", size: CGSize(width: 75, height: 75))
+    var hud = HUD()
 
-        addChild(topSky)
-        addChild(bottomSky)
-
-        bottomSky.zPosition = -40
-        topSky.zPosition = -40
+    override func sceneDidLoad() {
+        self.setupPhysics()
     }
 
     override func didMove(to view: SKView) {
-        createScene()
-//        let weatherView = URWeatherView(frame: view.bounds)
-//        weatherView.initView(mainWeatherImage: UIImage(named: "Background")!, backgroundImage: UIImage())
-//        let weather: URWeatherType = .comet
-//        weatherView.startWeatherSceneBulk(weather, debugOption: true)
-//        self.view?.addSubview(weatherView)
-
+        self.setupScene(by: view)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if gameStarted == false {
-            bgScroller?.isPaused = false
-            fgScroller?.isPaused = false
-            gScroller?.isPaused = false
+        guard let touch = touches.first else { return }
+        self.touchDown(atPoint: touch.location(in: self))
+    }
 
-            gameStarted =  true
-            bat.physicsBody?.affectedByGravity = true
-            createPauseBtn()
-            logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
-                self.logoImg.removeFromParent()
+    override func update(_ currentTime: TimeInterval) {
+        if self.gameRunning == false || self.playerDied == true { return }
+
+        if self.lastUpdateTime == 0 {
+            self.lastUpdateTime = currentTime
+        }
+
+        self.deltaTime = currentTime - self.lastUpdateTime
+        self.lastUpdateTime = currentTime
+
+        self.background.updateTime(delta: self.deltaTime)
+    }
+
+    func setupPhysics() {
+        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+        self.physicsBody!.categoryBitMask = CollisionBitMask.groundCategory
+        self.physicsBody!.collisionBitMask = CollisionBitMask.batCategory
+        self.physicsBody!.contactTestBitMask = CollisionBitMask.batCategory
+        self.physicsBody!.isDynamic = false
+        self.physicsBody!.affectedByGravity = false
+
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 5)
+        self.physicsWorld.contactDelegate = self
+    }
+
+    func setupScene(by view: SKView) {
+        // TODO: Colorize background of Background node as well
+        self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
+
+        self.background.setup(by: view)
+        self.addChild(self.background)
+
+        self.player.setup(by: view)  // TODO: Change/scale the size according the view
+        self.player.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        self.addChild(self.player)
+
+        self.hud.setup(by: view)
+        self.addChild(self.hud)
+
+        //SET UP THE BAT SPRITES FOR ANIMATION
+        batSprites.append(batAtlas.textureNamed("Bat1"))
+        batSprites.append(batAtlas.textureNamed("Bat2"))
+        batSprites.append(batAtlas.textureNamed("Bat3"))
+        batSprites.append(batAtlas.textureNamed("Bat4"))
+        batSprites.append(batAtlas.textureNamed("Bat5"))
+        batSprites.append(batAtlas.textureNamed("Bat6"))
+        batSprites.append(batAtlas.textureNamed("Bat7"))
+        batSprites.append(batAtlas.textureNamed("Bat8"))
+
+        //ANIMATE THE BAT AND REPEAT THE ANIMATION FOREVER
+        let animatebat = SKAction.animate(with: self.batSprites, timePerFrame: 0.1)
+        self.repeatActionbat = SKAction.repeatForever(animatebat)
+    }
+
+    func touchDown(atPoint position: CGPoint) {
+        if gameRunning == false {
+
+            gameRunning = true
+            self.player.physicsBody?.affectedByGravity = true
+            self.hud.createPauseBtn(to: self.view!.frame)  // NOTE: Bad frame request here
+            self.hud.logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
+                self.hud.logoImg.removeFromParent()
             })
-            taptoplayLbl.removeFromParent()
-            self.bat.run(repeatActionbat)
+            self.hud.taptoplayLbl.removeFromParent()
+            self.player.run(repeatActionbat)
 
             let spawn = SKAction.run({
                 () in
@@ -97,187 +121,129 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let removePipes = SKAction.removeFromParent()
             moveAndRemove = SKAction.sequence([movePipes, removePipes])
 
-            bat.physicsBody?.velocity = CGVector(dx: 5, dy: 5)
-            bat.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -40))
+            self.player.physicsBody?.velocity = CGVector(dx: 5, dy: 5)
+            self.player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -40))
 
             self.run(spawnDelayForever)
 
         } else {
-            if died == false {
-                bat.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bat.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -40))
+            if playerDied == false {
+                self.player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                self.player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -40))
             }
         }
 
-        for touch in touches {
-            let location = touch.location(in: self)
-            if died == true {
-                if restartBtn.contains(location) {
-                    if UserDefaults.standard.object(forKey: "highestScore") != nil {
-                        let hscore = UserDefaults.standard.integer(forKey: "highestScore")
-                        if hscore < Int(scoreLbl.text!)! {
-                            UserDefaults.standard.set(scoreLbl.text, forKey: "highestScore")
-                        }
-                    } else {
-                        UserDefaults.standard.set(0, forKey: "highestScore")
-                    }
-                    restartScene()
-                }
-            } else {
-                if pauseBtn.contains(location) {
-                    if self.isPaused == false {
-                        self.isPaused = true
-                        pauseBtn.texture = SKTexture(imageNamed: "Play")
-                    } else {
-                        self.isPaused = false
-                        pauseBtn.texture = SKTexture(imageNamed: "Pause")
-                    }
+        if playerDied == true {
+            if self.hud.restartBtn.contains(position) {
+                GameManager.shared.saveGame()
+                restartScene()
+            }
+        } else {
+            if self.hud.pauseBtn.contains(position) {
+                if self.isPaused == false {
+                    self.isPaused = true
+                    self.hud.pauseBtn.texture = SKTexture(imageNamed: "Play")
+                } else {
+                    self.isPaused = false
+                    self.hud.pauseBtn.texture = SKTexture(imageNamed: "Pause")
                 }
             }
         }
     }
 
+    // TODO: Move to the scene manager
     func restartScene() {
-        self.removeAllChildren()
-        self.removeAllActions()
-        died = false
-        gameStarted = false
-        score = 0
-        createScene()
+        GameManager.shared.resetGame()
+        let scene = GameScene(size: self.view!.bounds.size)
+        self.view!.presentScene(scene)
     }
 
-    func createScene() {
-        self._firstStart = true
+}
 
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-        self.physicsBody?.categoryBitMask = CollisionBitMask.groundCategory
-        self.physicsBody?.collisionBitMask = CollisionBitMask.batCategory
-        self.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.affectedByGravity = false
-
-        self.physicsWorld.contactDelegate = self
-
-//        self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
-        createSky()
-
-        // Getting the images:
-        let bgImages = [UIImage(named: "SummerBackground")!, UIImage(named: "SummerBackground")!]
-        let fgImages = [UIImage(named: "SummerForeground")!, UIImage(named: "SummerForeground")!]
-        let gImages = [UIImage(named: "SummerGround")!, UIImage(named: "SummerGround")!]
-
-        // Initializing InfiniteScrollingBackground's Instance:
-        bgScroller = InfiniteScrollingBackground(images: bgImages, scene: self, scrollDirection: .left, speed: 18)
-        fgScroller = InfiniteScrollingBackground(images: fgImages, scene: self, scrollDirection: .left, speed: 9)
-        gScroller = InfiniteScrollingBackground(images: gImages, scene: self, scrollDirection: .left, speed: 7)
-
-        bgScroller?.isPaused = true
-        fgScroller?.isPaused = true
-        gScroller?.isPaused = true
-
-        bgScroller?.scroll()
-        fgScroller?.scroll()
-        gScroller?.scroll()
-
-        // (Optional) Changing the instance's zPosition:
-        //bgScroller?.zPosition = -10
-        //fgScroller?.zPosition = -1
-
-//        for i in 0..<2 {
-//            let background = SKSpriteNode(imageNamed: "Background")
-//            background.anchorPoint = CGPoint.init(x: 0, y: 0)
-//            background.position = CGPoint(x: CGFloat(i) * self.frame.width, y: 0)
-//            background.name = "background"
-//            background.size = (self.view?.bounds.size)!
-//            self.addChild(background)
-//        }
-
-        //SET UP THE BIRD SPRITES FOR ANIMATION
-        batSprites.append(batAtlas.textureNamed("Bat1"))
-        batSprites.append(batAtlas.textureNamed("Bat2"))
-        batSprites.append(batAtlas.textureNamed("Bat3"))
-        batSprites.append(batAtlas.textureNamed("Bat4"))
-        batSprites.append(batAtlas.textureNamed("Bat5"))
-        batSprites.append(batAtlas.textureNamed("Bat6"))
-        batSprites.append(batAtlas.textureNamed("Bat7"))
-        batSprites.append(batAtlas.textureNamed("Bat8"))
-
-        self.bat = createBat()
-        self.addChild(bat)
-
-        //ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER
-        let animatebat = SKAction.animate(with: self.batSprites, timePerFrame: 0.1)
-        self.repeatActionbat = SKAction.repeatForever(animatebat)
-
-        scoreLbl = createScoreLabel()
-        self.addChild(scoreLbl)
-
-        highscoreLbl = createHighscoreLabel()
-        self.addChild(highscoreLbl)
-
-        createLogo()
-
-        taptoplayLbl = createTaptoplayLabel()
-        self.addChild(taptoplayLbl)
-    }
+extension GameScene: SKPhysicsContactDelegate {
 
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
 
-      if firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.pillarCategory || firstBody.categoryBitMask == CollisionBitMask.pillarCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory || firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.groundCategory || firstBody.categoryBitMask == CollisionBitMask.groundCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory {
+        if firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.pillarCategory || firstBody.categoryBitMask == CollisionBitMask.pillarCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory || firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.groundCategory || firstBody.categoryBitMask == CollisionBitMask.groundCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory {
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, _) in
                 node.speed = 0
                 self.removeAllActions()
             }))
-            if died == false {
-                died = true
-                createRestartBtn()
-                pauseBtn.removeFromParent()
-                self.bat.removeAllActions()
+            if playerDied == false {
+                playerDied = true
+                self.hud.createRestartBtn(to: self.view!.frame)  // NOTE: Bad frame request here
+                self.hud.pauseBtn.removeFromParent()
+                self.player.removeAllActions()
             }
-        } else if firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.flowerCategory {
-            run(collectSound)
-            score += 1
-            scoreLbl.text = "\(score)"
+
+        } else if firstBody.categoryBitMask == CollisionBitMask.batCategory && secondBody.categoryBitMask == CollisionBitMask.bugCategory {
+            run(SoundManager.shared.catchBug)
+            self.hud.score += 1
             secondBody.node?.removeFromParent()
-        } else if firstBody.categoryBitMask == CollisionBitMask.flowerCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory {
-            run(collectSound)
-            score += 1
-            scoreLbl.text = "\(score)"
+
+        } else if firstBody.categoryBitMask == CollisionBitMask.bugCategory && secondBody.categoryBitMask == CollisionBitMask.batCategory {
+            run(SoundManager.shared.catchBug)
+            self.hud.score += 1
             firstBody.node?.removeFromParent()
         }
     }
+}
 
-    override func update(_ currentTime: TimeInterval) {
-        if lastUpdateTimeInterval == 0 {
-            lastUpdateTimeInterval = currentTime
-        }
+// TODO: Rewrite it!
+extension GameScene {
 
-        deltaTime = currentTime - lastUpdateTimeInterval
-        lastUpdateTimeInterval = currentTime
+    func createWalls() -> SKNode {
+        let bugNode = SKSpriteNode(imageNamed: "Bug")
+        bugNode.size = CGSize(width: 56, height: 37)
+        bugNode.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2)
+        bugNode.physicsBody = SKPhysicsBody(texture: bugNode.texture!, size: bugNode.size)
+        bugNode.physicsBody?.affectedByGravity = false
+        bugNode.physicsBody?.isDynamic = false
+        bugNode.physicsBody?.categoryBitMask = CollisionBitMask.bugCategory
+        bugNode.physicsBody?.collisionBitMask = 0
+        bugNode.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
+        bugNode.color = SKColor.blue
 
-        if _firstStart {
-            self._startTime = currentTime
-            _firstStart = false
-        } else {
-            self.elapsedSeconds = Int(currentTime - _startTime)
-            //            print(elapsedSeconds)
-        }
+        wallPair = SKNode()
+        wallPair.name = "wallPair"
 
-        // Called before each frame is rendered
-        if gameStarted == true {
-            if died == false {
-//                enumerateChildNodes(withName: "background", using: ({
-//                    (node, _) in
-//                    let bg = node as! SKSpriteNode
-//                    bg.position = CGPoint(x: bg.position.x - 2, y: bg.position.y)
-//                    if bg.position.x <= -bg.size.width {
-//                        bg.position = CGPoint(x: bg.position.x + bg.size.width * 2, y: bg.position.y)
-//                    }
-//                }))
-            }
-        }
+        let topWall = SKSpriteNode(imageNamed: "Pillar")
+        let btmWall = SKSpriteNode(imageNamed: "Pillar")
+        let reSize = CGFloat(max(480 - Int(deltaTime), 400))
+
+        topWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 + reSize)
+        btmWall.position = CGPoint(x: self.frame.width + 25, y: self.frame.height / 2 - reSize)
+        topWall.setScale(0.5)
+        btmWall.setScale(0.5)
+
+        topWall.physicsBody = SKPhysicsBody(rectangleOf: topWall.size)
+        topWall.physicsBody?.categoryBitMask = CollisionBitMask.pillarCategory
+        topWall.physicsBody?.collisionBitMask = CollisionBitMask.batCategory
+        topWall.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
+        topWall.physicsBody?.isDynamic = false
+        topWall.physicsBody?.affectedByGravity = false
+
+        btmWall.physicsBody = SKPhysicsBody(rectangleOf: btmWall.size)
+        btmWall.physicsBody?.categoryBitMask = CollisionBitMask.pillarCategory
+        btmWall.physicsBody?.collisionBitMask = CollisionBitMask.batCategory
+        btmWall.physicsBody?.contactTestBitMask = CollisionBitMask.batCategory
+        btmWall.physicsBody?.isDynamic = false
+        btmWall.physicsBody?.affectedByGravity = false
+        topWall.zRotation = CGFloat(Double.pi)
+
+        wallPair.addChild(topWall)
+        wallPair.addChild(btmWall)
+        wallPair.zPosition = 1
+
+        let randomPosition = random(min: -200, max: 200)
+        wallPair.position.y = wallPair.position.y +  randomPosition
+        wallPair.addChild(bugNode)
+        wallPair.run(moveAndRemove)
+
+        return wallPair
     }
+
 }
