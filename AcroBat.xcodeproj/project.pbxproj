@@ -15,6 +15,7 @@
 		3B02EF4B20C14842003FA982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B02EF4920C14842003FA982 /* LaunchScreen.storyboard */; };
 		3B7BC73B20C6DEBB0022406B /* CatchBug.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B7BC73A20C6DEBB0022406B /* CatchBug.wav */; };
 		3BB5576E20C1C9DD008FF865 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3BB5576C20C1C9DC008FF865 /* Sprites.atlas */; };
+		5742AA8120D706E3007E0D1B /* ScrollBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5742AA8020D706E3007E0D1B /* ScrollBackground.swift */; };
 		57DA756920D161DA00D56BED /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA756820D161DA00D56BED /* SoundManager.swift */; };
 		57DA756C20D1627E00D56BED /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA756B20D1627E00D56BED /* HUD.swift */; };
 		57DA756E20D1724600D56BED /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA756D20D1724600D56BED /* Bat.swift */; };
@@ -22,8 +23,10 @@
 		57DA757420D1812200D56BED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA757320D1812200D56BED /* Constants.swift */; };
 		57DA757620D1812A00D56BED /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA757520D1812A00D56BED /* Utils.swift */; };
 		57DA757820D188F300D56BED /* TextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA757720D188F300D56BED /* TextureManager.swift */; };
-		57DA757A20D18A7E00D56BED /* ParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA757920D18A7E00D56BED /* ParallaxBackground.swift */; };
+		57DA757A20D18A7E00D56BED /* OldParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA757920D18A7E00D56BED /* OldParallaxBackground.swift */; };
 		57DA757C20D1AA3900D56BED /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA757B20D1AA3900D56BED /* GameManager.swift */; };
+		57F43FDF20D81D0300725341 /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F43FDE20D81D0300725341 /* BackgroundManager.swift */; };
+		57F43FE120D81D7F00725341 /* ParallaxBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F43FE020D81D7F00725341 /* ParallaxBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,7 @@
 		3B02EF4C20C14842003FA982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B7BC73A20C6DEBB0022406B /* CatchBug.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CatchBug.wav; sourceTree = "<group>"; };
 		3BB5576C20C1C9DC008FF865 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		5742AA8020D706E3007E0D1B /* ScrollBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollBackground.swift; sourceTree = "<group>"; };
 		57DA756820D161DA00D56BED /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		57DA756B20D1627E00D56BED /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		57DA756D20D1724600D56BED /* Bat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
@@ -44,8 +48,10 @@
 		57DA757320D1812200D56BED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57DA757520D1812A00D56BED /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		57DA757720D188F300D56BED /* TextureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManager.swift; sourceTree = "<group>"; };
-		57DA757920D18A7E00D56BED /* ParallaxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxBackground.swift; sourceTree = "<group>"; };
+		57DA757920D18A7E00D56BED /* OldParallaxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldParallaxBackground.swift; sourceTree = "<group>"; };
 		57DA757B20D1AA3900D56BED /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		57F43FDE20D81D0300725341 /* BackgroundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
+		57F43FE020D81D7F00725341 /* ParallaxBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 				57DA757B20D1AA3900D56BED /* GameManager.swift */,
 				57DA756820D161DA00D56BED /* SoundManager.swift */,
 				57DA757720D188F300D56BED /* TextureManager.swift */,
+				57F43FDE20D81D0300725341 /* BackgroundManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -151,7 +158,9 @@
 				57DA756B20D1627E00D56BED /* HUD.swift */,
 				57DA756D20D1724600D56BED /* Bat.swift */,
 				57DA756F20D1754000D56BED /* Walls.swift */,
-				57DA757920D18A7E00D56BED /* ParallaxBackground.swift */,
+				57DA757920D18A7E00D56BED /* OldParallaxBackground.swift */,
+				5742AA8020D706E3007E0D1B /* ScrollBackground.swift */,
+				57F43FE020D81D7F00725341 /* ParallaxBackground.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DA757020D1754000D56BED /* Walls.swift in Sources */,
+				57F43FDF20D81D0300725341 /* BackgroundManager.swift in Sources */,
 				3B02EF4120C14840003FA982 /* GameScene.swift in Sources */,
 				3B02EF4320C14840003FA982 /* GameViewController.swift in Sources */,
 				57DA756C20D1627E00D56BED /* HUD.swift in Sources */,
@@ -273,7 +283,9 @@
 				3B02EF3B20C14840003FA982 /* AppDelegate.swift in Sources */,
 				57DA756920D161DA00D56BED /* SoundManager.swift in Sources */,
 				57DA757420D1812200D56BED /* Constants.swift in Sources */,
-				57DA757A20D18A7E00D56BED /* ParallaxBackground.swift in Sources */,
+				57DA757A20D18A7E00D56BED /* OldParallaxBackground.swift in Sources */,
+				5742AA8120D706E3007E0D1B /* ScrollBackground.swift in Sources */,
+				57F43FE120D81D7F00725341 /* ParallaxBackground.swift in Sources */,
 				57DA757C20D1AA3900D56BED /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,6 @@ class GameManager {
 
     func loadGame() {
         if let savedHighscore = UserDefaults.standard.object(forKey: "highscore") {
-            print(savedHighscore)
             self.highscore = savedHighscore as! Int
         }
     }

@@ -20,12 +20,12 @@ class GameViewController: UIViewController {
         let scene = GameScene(size: view.bounds.size)  // view.frame.size
 
         // Set the scale mode to scale to fit the window
-        scene.scaleMode = .resizeFill
+        scene.scaleMode = .aspectFill
 
         // Debug
         view.showsFPS = true
         view.showsNodeCount = false
-        view.ignoresSiblingOrder = false
+        view.ignoresSiblingOrder = false  //NOTE: Performace optimization
         view.showsPhysics = true
 
         // Present the scene

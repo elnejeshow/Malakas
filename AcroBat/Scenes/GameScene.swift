@@ -51,7 +51,8 @@ class GameScene: SKScene {
         self.deltaTime = currentTime - self.lastUpdateTime
         self.lastUpdateTime = currentTime
 
-        self.background.updateTime(delta: self.deltaTime)
+        //self.background.updateTime(delta: self.deltaTime)
+        self.background.updatePosition(distance: 10)
     }
 
     func setupPhysics() {
@@ -71,7 +72,25 @@ class GameScene: SKScene {
         self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
 
         self.background.setup(by: view)
+
+        let bg1 = self.background.addLayer()
+        bg1.setup(by: view)
+        bg1.addImage(name: "SummerBackground", duplicate: 20)
+
+        let bg2 = self.background.addLayer()
+        bg2.setup(by: view)
+        bg2.addImage(name: "SummerForeground", duplicate: 20)
+
+        let bg3 = self.background.addLayer()
+        bg3.setup(by: view)
+        bg3.addImage(name: "SummerGround", duplicate: 20)
+
+
         self.addChild(self.background)
+
+        //self.background.addLayer(imageNames: ["SummerForeground", "SummerForeground"])
+        //self.background.addLayer(imageNames: ["SummerGround", "SummerGround"])
+
 
         self.player.setup(by: view)  // TODO: Change/scale the size according the view
         self.player.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
@@ -97,6 +116,8 @@ class GameScene: SKScene {
 
     func touchDown(atPoint position: CGPoint) {
         if gameRunning == false {
+
+            self.background.startScrolling()
 
             gameRunning = true
             self.player.physicsBody?.affectedByGravity = true
