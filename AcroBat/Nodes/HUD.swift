@@ -99,7 +99,7 @@ class HUD: SKNode {
 
     func createLogo(to frame: CGRect) {
         logoImg = SKSpriteNode(imageNamed: "Logo")
-        logoImg.size = CGSize(width: 250, height: 110)
+        logoImg.size = CGSize(width: 300, height: 125)
         logoImg.position = CGPoint(x: frame.midX, y: frame.midY + 100)
         logoImg.setScale(0.5)
         self.addChild(logoImg)
